@@ -112,3 +112,4 @@ const renderComments = () => {
 renderComments();
 
 console.log("It works!");
+console.log('Complete');
