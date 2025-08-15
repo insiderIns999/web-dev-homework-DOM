@@ -44,7 +44,8 @@ userCommentElement.addEventListener('input', () => {
 const initButtonLikes = () => {
 	const buttonsLikesElements = document.querySelectorAll('.like-button');
 	buttonsLikesElements.forEach((buttonLikeElement, index) => {
-		buttonLikeElement.addEventListener('click', () => {
+		buttonLikeElement.addEventListener('click', (event) => {
+			event.stopPropagation();
 			if (!comments[index].isLiked) {
 				++comments[index].likes;
 				comments[index].isLiked = true;
@@ -67,8 +68,8 @@ function addComment() {
   else {
 	comments.push(
 		{
-			userName: userNameElement.value,
-			commentText: userCommentElement.value,
+			userName: userNameElement.value.replaceAll('<', '&lt;').replaceAll('>', '&gt;'),
+			commentText: userCommentElement.value.replaceAll('<', '&lt;').replaceAll('>', '&gt;'),
 			userDate: getUserCommentDate(),
 			likes: likesCounter,
 			isLiked: false
@@ -79,6 +80,15 @@ function addComment() {
 	initButtonLikes();
 	renderComments();
   }
+}
+
+const answerComment = () => {
+	const liElements = document.querySelectorAll('.comment');
+	liElements.forEach((liElement, index) => {
+		liElement.addEventListener('click', () => {
+			userCommentElement.value = "> " + comments[index].userName + "\n \n > " + comments[index].commentText + "<br />";
+		});
+	});
 }
   
 const renderComments = () => {
@@ -107,6 +117,7 @@ const renderComments = () => {
 	ulElement.innerHTML = commentsHTML;
 	initButtonLikes();
 	buttonSendElement.addEventListener('click', addComment);
+	answerComment();
 }
 
 renderComments();
