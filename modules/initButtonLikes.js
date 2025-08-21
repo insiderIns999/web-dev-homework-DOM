@@ -9,12 +9,11 @@ export const initButtonLikes = () => {
             if (!comments[index].isLiked) {
                 ++comments[index].likes;
                 comments[index].isLiked = true;
-            }
-            else {
+            } else {
                 --comments[index].likes;
                 comments[index].isLiked = false;
             }
             renderComments();
         });
     });
-}
+};

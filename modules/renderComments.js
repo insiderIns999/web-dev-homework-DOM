@@ -5,8 +5,9 @@ import { addComment } from './addComment.js';
 import { answerComment } from './answerComment.js';
 
 export const renderComments = () => {
-	const commentsHTML = comments.map((comment) => {
-		return `
+    const commentsHTML = comments
+        .map((comment) => {
+            return `
 		<li class="comment">
 		  <div class="comment-header">
 			<div>${comment.userName}</div>
@@ -25,10 +26,11 @@ export const renderComments = () => {
 		  </div>
 		</li>
 		`;
-	}).join('');
-  
-	ulElement.innerHTML = commentsHTML;
-	initButtonLikes();
-	buttonSendElement.addEventListener('click', addComment);
-	answerComment();
-}
+        })
+        .join('');
+
+    ulElement.innerHTML = commentsHTML;
+    initButtonLikes();
+    buttonSendElement.addEventListener('click', addComment);
+    answerComment();
+};
