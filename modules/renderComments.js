@@ -10,12 +10,12 @@ export const renderComments = () => {
             return `
 		<li class="comment">
 		  <div class="comment-header">
-			<div>${comment.userName}</div>
-			<div>${comment.userDate}</div>
+			<div>${comment.author.name}</div>
+			<div>${comment.date}</div>
 		  </div>
 		  <div class="comment-body">
 			<div class="comment-text">
-			  ${comment.commentText}
+			  ${comment.text}
 			</div>
 		  </div>
 		  <div class="comment-footer">
