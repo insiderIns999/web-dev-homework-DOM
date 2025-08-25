@@ -1,6 +1,15 @@
-import { comments } from './modules/comments.js';
+import { comments, updateComments } from './modules/comments.js';
 import { initButtonLikes } from './modules/initButtonLikes.js';
 import { renderComments } from './modules/renderComments.js';
+
+fetch('https://wedev-api.sky.pro/api/v1/oleg-gagarin/comments/', {
+    method: 'GET'
+}).then((response) => {
+    return response.json();
+}).then((data) => {
+    updateComments(data.comments);
+    renderComments();
+});
 
 ('use strict');
 export const userNameElement = document.querySelector('.add-form-name');
@@ -16,8 +25,6 @@ userNameElement.addEventListener('input', () => {
 userCommentElement.addEventListener('input', () => {
     userCommentElement.style.backgroundColor = '#fff';
 });
-
-renderComments();
 
 console.log('It works!');
 console.log('Complete');
