@@ -9,12 +9,24 @@ function delay(interval = 300) {
    });
 }
 
+let status = null;
+
 export const initButtonLikes = () => {
     const buttonsLikesElements = document.querySelectorAll('.like-button');
     buttonsLikesElements.forEach((buttonLikeElement, index) => {
         buttonLikeElement.addEventListener('click', (event) => {
             event.stopPropagation();
-            buttonLikeElement.classList.add('-loading-like');
+            
+            if(!comments[index].isLiked) {
+                status = '-loasing-like-to-like';
+            }
+            else {
+                status = '-loasing-like-to-dislike';
+            }
+
+            buttonLikeElement.classList.add(status);
+            //buttonLikeElement.classList.add('-loading-like');
+            
             delay(2000).then(() => {
                 if (!comments[index].isLiked) {
                     ++comments[index].likes;
@@ -26,6 +38,8 @@ export const initButtonLikes = () => {
                 renderComments();
             });
         });
-        buttonLikeElement.classList.remove('-loading-like');
+
+        buttonLikeElement.classList.remove(status);
+        //buttonLikeElement.classList.remove('-loading-like');
     });
 };
