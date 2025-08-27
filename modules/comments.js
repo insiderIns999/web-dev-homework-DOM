@@ -1,6 +1,7 @@
 import { getUserCommentDate } from './userCommentDate.js';
 
 export let comments = [
+    /*
     {
         userName: 'Глеб Фокин',
         commentText: 'Это будет первый комментарий на этой странице',
@@ -15,4 +16,9 @@ export let comments = [
         likes: 75,
         isLiked: true,
     },
+    */
 ];
+
+export const updateComments = (newComments) => {
+    comments = newComments;
+}
