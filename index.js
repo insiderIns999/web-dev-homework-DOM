@@ -1,21 +1,13 @@
-import { comments, updateComments } from './modules/comments.js';
-import { initButtonLikes } from './modules/initButtonLikes.js';
-import { renderComments } from './modules/renderComments.js';
+import { fetchGETAndRenderComments } from './modules/fetchGETAndRenderComments.js';
 
-fetch('https://wedev-api.sky.pro/api/v1/oleg-gagarin/comments/', {
-    method: 'GET'
-}).then((response) => {
-    return response.json();
-}).then((data) => {
-    updateComments(data.comments);
-    renderComments();
-});
-
+fetchGETAndRenderComments();
+console.log('OK');
 ('use strict');
 export const userNameElement = document.querySelector('.add-form-name');
 export const userCommentElement = document.querySelector('.add-form-text');
 export const buttonSendElement = document.querySelector('.add-form-button');
 export const ulElement = document.querySelector('.comments');
+export const titleH3 = document.getElementById('titleH3');
 
 export let likesCounter = 0;
 
