@@ -1,4 +1,4 @@
-import { comments } from './comments.js';
+import { comments, updateComments } from './comments.js';
 import { initButtonLikes } from './initButtonLikes.js';
 import { ulElement, buttonSendElement } from '../index.js';
 import { addComment } from './addComment.js';
