@@ -1,9 +1,7 @@
 import { userNameElement, userCommentElement, likesCounter } from '../index.js';
-import { getUserCommentDate } from './userCommentDate.js';
 import { initButtonLikes } from './initButtonLikes.js';
-import { renderComments } from './renderComments.js';
-import { comments, updateComments } from './comments.js';
 import { replaceAllTags } from './replaceAll.js';
+import { fetchGETAndRenderComments } from './fetchGETAndRenderComments.js';
 
 export function addComment() {
     if (
@@ -16,6 +14,12 @@ export function addComment() {
         userCommentElement.style.backgroundColor = '#f00';
         alert('Пожалуйста заполните все поля');
     } else {
+        const blockLoader = document.getElementById('comment-loader');
+        const blockForm = document.getElementsByClassName('add-form');
+
+        blockForm[0].style.display = 'none';
+        blockLoader.style.display = 'block';
+
         const nameReplaced = replaceAllTags(userNameElement.value);
         const commentReplaced = replaceAllTags(userCommentElement.value);
 
@@ -25,17 +29,16 @@ export function addComment() {
                 name: nameReplaced,
                 text: commentReplaced
             })
-        }).then((response) => {
+        })
+        .then((response) => {
             return response.json();
-        }).then((data) => {
-            fetch('https://wedev-api.sky.pro/api/v1/oleg-gagarin/comments/', {
-                method: 'GET'
-            }).then((response) => {
-                return response.json();
-            }).then((data) => {
-                updateComments(data.comments);
-                renderComments();
-            });
+        })
+        .then(() => {
+            return fetchGETAndRenderComments();
+        })
+        .then(() => {
+            blockForm[0].style.display = 'flex';
+            blockLoader.style.display = 'none';
         });
 
         /*
