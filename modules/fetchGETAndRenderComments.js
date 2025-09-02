@@ -16,7 +16,10 @@ export const fetchGETAndRenderComments = () => {
     })
     .then((data) => {
       updateComments(data.comments);
-      getUserCommentDate(data.comments.date);
+      const dataComments = data.comments;
+      dataComments.forEach((dataComment) => {
+        getUserCommentDate(dataComment.date);
+      });
       renderComments();
       titleH3.style.display = "none";
     })
