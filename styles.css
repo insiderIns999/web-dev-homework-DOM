@@ -107,7 +107,7 @@ body {
 }
 
 .add-form-name {
-  width: 300px;
+  width: 92%;
   padding: 11px 22px;
 }
 
@@ -249,4 +249,13 @@ body {
 
 .auth-form-input {
   width: 90%;
+}
+
+#uploading-data {
+  display: none;
+}
+
+.a-white {
+  color:#fff;
+  font-weight: bold;
 }

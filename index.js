@@ -5,7 +5,7 @@ import { authorizationForm } from './modules/formAuthorization.js';
 renderCommentsList();
 authorizationForm();
 
-export const uploadGIF = document.getElementById('uploading-data');
+export const upload = document.getElementById('uploading-data');
 //addComment();
 ('use strict');
 
