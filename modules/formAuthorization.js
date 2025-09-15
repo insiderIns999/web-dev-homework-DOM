@@ -1,4 +1,5 @@
-import { ulElement, uploadGIF } from "../index.js";
+import { ulElement, upload } from "../index.js";
+import { registrationForm } from "./formRegistration.js";
 
 export const authorizationForm = () => {
     const authorizationLink = document.getElementById('auth-link');
@@ -15,7 +16,7 @@ export const authorizationForm = () => {
             <button id="auth-button" class="auth-form-button add-form-button" disabled>Войти</button>
             </div>
             <p class="white">Если не зарегистрированы,
-            <a class="a-white" id="link-reg" href="#"> Зарегистрироваться</a>
+            <a class="a-white" id="link-reg" href="#"> Зарегистрируйтесь</a>
         </div>
         <div id="uploading-data" class="uploading-data">
             <img class="uploader" src="loader.gif" alt="Индикатор загрузки" />
@@ -24,8 +25,9 @@ export const authorizationForm = () => {
         `;
 
         document.getElementById('authP').style.display = 'none';
-        //uploadGIF.style.display = 'none';
         ulElement.style.display = 'none';
         divApp.innerHTML = authFormHTML;
+        const regLinkToForm = document.getElementById('link-reg');
+        regLinkToForm.addEventListener('click', registrationForm);
     });
 }
