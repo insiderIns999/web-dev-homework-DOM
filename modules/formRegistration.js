@@ -1,4 +1,10 @@
-import { ulElement } from "../index.js";
+import { ulElement, updateUserName } from "../index.js";
+import { registration, login, updateToken } from './api.js';
+import { renderAddCommentForm } from "./formAddComment.js";
+
+function replaceSymbols(string) {
+    return string.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('QUOTE_BEGIN', '<div class="quote">').replaceAll('QUOTE_END', '</div><br /><br />');
+}
 
 export const registrationForm = () => {
     const registrationLink = document.getElementById('link-reg');
@@ -14,7 +20,7 @@ export const registrationForm = () => {
             <br />
             <input id="user-password" type="password" name="password" class="add-form-name" placeholder="Введите пароль" />
             <div class="add-form-row reg-form-row">
-            <button id="reg-button" class="add-form-button" disabled>Зарегистрироваться</button>
+            <button id="reg-button" class="add-form-button">Зарегистрироваться</button>
             </div>
             <a id="authorization-button" class="a-white" href="#">Войти</a>
         </div>
@@ -38,7 +44,7 @@ export const registrationForm = () => {
                 <br />
                 <input id="user-password" type="password" name="password" class="auth-form-input add-form-name" placeholder="Введите пароль" />
                 <div class="add-form-row auth-form-row">
-                <button id="auth-button" class="auth-form-button add-form-button" disabled>Войти</button>
+                <button id="auth-button" class="auth-form-button add-form-button">Войти</button>
                 </div>
                 <p class="white">Если не зарегистрированы,
                 <a class="a-white" id="link-reg" href="#"> Зарегистрируйтесь</a>
@@ -54,6 +60,39 @@ export const registrationForm = () => {
             divApp.innerHTML = authFormHTML;
             const regLinkToForm = document.getElementById('link-reg');
             regLinkToForm.addEventListener('click', registrationForm);
+
+            const buttonElement = document.getElementById('auth-button');
+            buttonElement.addEventListener('click', () => {
+                login({
+                    login: replaceSymbols(document.getElementById('user-login').value),
+                    password: document.getElementById('user-password').value,
+                })
+                .then((responseData) => {
+                    updateUserName(responseData.user.name); //localStorage.setItem('name', responseData.user.name);
+                    updateToken(responseData.user.token); //localStorage.setItem('token', responseData.user.token);
+                    return renderAddCommentForm();
+                })
+                .catch((err) => {
+                    alert(err.message);
+                })
+            });
+        });
+
+        const registrationButtonElement = document.getElementById('reg-button');
+        registrationButtonElement.addEventListener('click', () => {
+            console.log('OK');
+            
+            let replaceLogin = replaceSymbols(document.getElementById('user-login').value);
+            let replaceName = replaceSymbols(document.getElementById('user-name').value);
+            
+            registration({
+                login: replaceLogin,
+                name: replaceName,
+                password: document.getElementById('user-password').value,
+            })
+            .then(() => {
+                alert('Вы успешно зарегистрировались'); 
+            })
         });
     });
 }
