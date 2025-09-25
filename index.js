@@ -1,22 +1,34 @@
-import { fetchGETAndRenderComments } from './modules/fetchGETAndRenderComments.js';
+import { renderCommentsList } from './modules/fetchGETAndRenderComments.js';
+//import { takeAndRender } from './modules/api.js';
+import { addingComment } from './modules/addComment.js';
+import { authorizationForm } from './modules/formAuthorization.js';
+//import { buttonSendElement } from './modules/addComment.js';
 
-fetchGETAndRenderComments();
-console.log('OK');
-('use strict');
 export const userNameElement = document.querySelector('.add-form-name');
 export const userCommentElement = document.querySelector('.add-form-text');
-export const buttonSendElement = document.querySelector('.add-form-button');
+
+
+renderCommentsList()
+//takeAndRender()
+.then(() => {
+    authorizationForm();
+})
+.then(() => {
+    addingComment();
+})
+
+
+export const upload = document.getElementById('uploading-data');
+
+('use strict');
+
 export const ulElement = document.querySelector('.comments');
 export const titleH3 = document.getElementById('titleH3');
 
-export let likesCounter = 0;
-
-userNameElement.addEventListener('input', () => {
-    userNameElement.style.backgroundColor = '#fff';
-});
-userCommentElement.addEventListener('input', () => {
-    userCommentElement.style.backgroundColor = '#fff';
-});
+export let userNameFromApi;
+export const updateUserName = (newUserName) => {
+    userNameFromApi = newUserName;
+};
 
 console.log('It works!');
 console.log('Complete');
