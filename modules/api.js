@@ -51,3 +51,17 @@ export function registration({ login, name, password }) {
     return response.json();
   });
 };
+
+export function addNewComment({ text }) {
+
+    return fetch(commentsURL, {
+      method: 'POST',
+      body: JSON.stringify({
+        'text': text,
+        forceError: true,
+      }),
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+};

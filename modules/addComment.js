@@ -1,21 +1,25 @@
-/*  
-import { userNameElement, userCommentElement, likesCounter } from "../index.js";
 import { initButtonLikes } from "./initButtonLikes.js";
 import { replaceAllTags } from "./replaceAll.js";
 import { renderCommentsList } from "./fetchGETAndRenderComments.js";
-/*
-const addingComment = () => {
-  console.log('новый коммент');
-    if (
-      userNameElement.value == "" ||
-      userNameElement.value == " " ||
-      userCommentElement.value == "" ||
-      userCommentElement.value == " "
-    ) {
-      userNameElement.style.backgroundColor = "#f00";
-      userCommentElement.style.backgroundColor = "#f00";
-      alert("Пожалуйста заполните все поля");
-    } else {
+import { addNewComment } from "./api.js";
+import { userNameElement, userCommentElement } from "../index.js";
+
+export let likesCounter = 0;
+
+export const addingComment = () => {
+  const buttonSendElement = document.querySelector('.add-form-button');
+  buttonSendElement.addEventListener('click', () => {
+    console.log('новый коммент');
+  if (
+    userNameElement.value == "" ||
+    userNameElement.value == " " ||
+    userCommentElement.value == "" ||
+    userCommentElement.value == " "
+  ) {
+    userNameElement.style.backgroundColor = "#f00";
+    userCommentElement.style.backgroundColor = "#f00";
+    alert("Пожалуйста заполните все поля");
+  } else {
       const blockLoader = document.getElementById("comment-loader");
       const blockForm = document.getElementsByClassName("add-form");
 
@@ -28,14 +32,7 @@ const addingComment = () => {
       const nameReplaced = replaceAllTags(userNameElement.value);
       const commentReplaced = replaceAllTags(userCommentElement.value);
 
-      fetch("https://wedev-api.sky.pro/api/v1/oleg-gagarin/comments", {
-        method: "POST",
-        body: JSON.stringify({
-          name: nameReplaced,
-          text: commentReplaced,
-          forceError: true,
-        }),
-      })
+      addNewComment()
       .then((response) => {
         if (response.status == 201) return response.json();
         else {
@@ -60,17 +57,5 @@ const addingComment = () => {
       userCommentElement.value = "";
       initButtonLikes();
     }
-}
-
-userNameElement.addEventListener('input', () => {
-    userNameElement.style.backgroundColor = '#fff';
-});
-userCommentElement.addEventListener('input', () => {
-    userCommentElement.style.backgroundColor = '#fff';
-});
-
-export function addComment() {
-  const sendButton = document.getElementById('btn');
-  //sendButton.addEventListener('click', addingComment);
-}
-*/
+  });
+};

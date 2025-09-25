@@ -2,7 +2,6 @@ import { comments, updateComments } from "./comments.js";
 import { initButtonLikes } from "./initButtonLikes.js";
 import { ulElement } from "../index.js";
 //import { buttonSendElement } from '../index.js';
-//import { addComment } from "./addComment.js";
 //import { answerComment } from "./answerComment.js";
 import { getUserCommentDate } from "./userCommentDate.js";
 
@@ -32,7 +31,6 @@ export const renderComments = () => {
     .join("");
 
   ulElement.innerHTML = commentsHTML;
-  //addComment();
   initButtonLikes();
   //answerComment();
 };

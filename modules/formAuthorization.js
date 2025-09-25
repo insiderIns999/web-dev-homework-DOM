@@ -64,9 +64,5 @@ export const authorizationForm = () => {
                 alert(err.message);
             })
         });
-
-        //const linkRegElement = document.getElementById('link-reg');
-
-        //linkRegElement.addEventListener('click', renderAuthForm);
     });
 }

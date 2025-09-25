@@ -1,3 +1,6 @@
+import { userNameElement, userCommentElement } from "../index.js";
+//import { addingComment } from "./addComment.js";
+
 export const renderAddCommentForm = () => {
     const divApp = document.getElementById('app');
     const addCommentFormHTML =  `
@@ -14,3 +17,12 @@ export const renderAddCommentForm = () => {
     commentsList.style.display = 'flex';
     divApp.innerHTML = addCommentFormHTML;
 }
+
+        /*
+        userNameElement.addEventListener('input', () => {
+            userNameElement.style.backgroundColor = '#fff';
+        });
+        userCommentElement.addEventListener('input', () => {
+            userCommentElement.style.backgroundColor = '#fff';
+        });
+        */ 
