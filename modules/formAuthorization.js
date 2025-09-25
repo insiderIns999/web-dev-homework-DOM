@@ -37,8 +37,8 @@ export const authorizationForm = () => {
         const buttonElement = document.getElementById('auth-button');
         const loginInputElement = document.getElementById('user-login');
         const passwordInputElement = document.getElementById('user-password');
-        const userArr = [loginInputElement, passwordInputElement];
-
+        //const userArr = [loginInputElement, passwordInputElement];
+/*
         for (let j = 0; j < userArr.length; j++) {
             userArr[j].addEventListener('input', () => {
                 if (userArr.every((el) => el.value !== '')) {
@@ -49,7 +49,7 @@ export const authorizationForm = () => {
                 }
             });
         };
-
+*/
         buttonElement.addEventListener('click', () => {
             login({
                 login: loginInputElement.value,
