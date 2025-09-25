@@ -107,7 +107,7 @@ body {
 }
 
 .add-form-name {
-  width: 300px;
+  width: 92%;
   padding: 11px 22px;
 }
 
@@ -232,4 +232,30 @@ body {
 
 .-loasing-like-to-dislike {
   animation: toDisLike 2s linear infinite;
+}
+
+.quote {
+  background-color: #fff;
+  color: #000;
+  font-size: 24px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px;
+}
+
+.auth-form {
+  display: flex;
+  align-items: center;
+}
+
+.auth-form-input {
+  width: 90%;
+}
+
+#uploading-data {
+  display: none;
+}
+
+.a-white {
+  color:#fff;
+  font-weight: bold;
 }

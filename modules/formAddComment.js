@@ -1,0 +1,28 @@
+import { userNameElement, userCommentElement } from "../index.js";
+//import { addingComment } from "./addComment.js";
+
+export const renderAddCommentForm = () => {
+    const divApp = document.getElementById('app');
+    const addCommentFormHTML =  `
+    <div class="add-form">
+        <input type="text" class="add-form-name" placeholder="Введите ваше имя" />
+        <textarea id="textarea" type="textarea" class="add-form-text" placeholder="Введите ваш коментарий" rows="4"></textarea>
+        <div class="add-form-row">
+            <button id="btn" class="add-form-button">Написать</button>
+        </div>
+    </div>
+    `;
+
+    const commentsList = document.querySelector('.comments');
+    commentsList.style.display = 'flex';
+    divApp.innerHTML = addCommentFormHTML;
+}
+
+        /*
+        userNameElement.addEventListener('input', () => {
+            userNameElement.style.backgroundColor = '#fff';
+        });
+        userCommentElement.addEventListener('input', () => {
+            userCommentElement.style.backgroundColor = '#fff';
+        });
+        */ 
