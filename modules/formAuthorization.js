@@ -4,6 +4,7 @@ import { login } from "./api.js";
 import { updateUserName } from "../index.js";
 import { updateToken } from "./api.js";
 import { renderAddCommentForm } from "./formAddComment.js";
+import { addingComment } from "./addComment.js";
 
 export const authorizationForm = () => {
     const authorizationLink = document.getElementById('auth-link');
@@ -37,8 +38,8 @@ export const authorizationForm = () => {
         const buttonElement = document.getElementById('auth-button');
         const loginInputElement = document.getElementById('user-login');
         const passwordInputElement = document.getElementById('user-password');
-        //const userArr = [loginInputElement, passwordInputElement];
-/*
+        const userArr = [loginInputElement, passwordInputElement];
+
         for (let j = 0; j < userArr.length; j++) {
             userArr[j].addEventListener('input', () => {
                 if (userArr.every((el) => el.value !== '')) {
@@ -49,7 +50,7 @@ export const authorizationForm = () => {
                 }
             });
         };
-*/
+
         buttonElement.addEventListener('click', () => {
             login({
                 login: loginInputElement.value,
@@ -58,7 +59,8 @@ export const authorizationForm = () => {
             .then((responseData) => {
                 updateUserName(responseData.user.name); //localStorage.setItem('name', responseData.user.name);
                 updateToken(responseData.user.token); //localStorage.setItem('token', responseData.user.token);
-                return renderAddCommentForm();
+                renderAddCommentForm();
+                addingComment();
             })
             .catch((err) => {
                 alert(err.message);

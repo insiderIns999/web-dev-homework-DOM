@@ -1,4 +1,5 @@
 import { ulElement, updateUserName } from "../index.js";
+import { addingComment } from "./addComment.js";
 import { registration, login, updateToken } from './api.js';
 import { renderAddCommentForm } from "./formAddComment.js";
 
@@ -70,7 +71,8 @@ export const registrationForm = () => {
                 .then((responseData) => {
                     updateUserName(responseData.user.name); //localStorage.setItem('name', responseData.user.name);
                     updateToken(responseData.user.token); //localStorage.setItem('token', responseData.user.token);
-                    return renderAddCommentForm();
+                    renderAddCommentForm();
+                    addingComment();
                 })
                 .catch((err) => {
                     alert(err.message);
