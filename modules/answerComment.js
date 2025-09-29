@@ -10,7 +10,7 @@ export const answerComment = () => {
         else {
             const authorName = comments[index].author.name;
             const authorComment = comments[index].text;
-            const userNameElement = document.getElementById('input-user-name-addComment');
+            //const userNameElement = document.getElementById('input-user-name-addComment');
             const userCommentElement = document.getElementById('textarea');
             userCommentElement.value = 'QUOTE_BEGIN' + authorName + ':\n' + authorComment + 'QUOTE_END ';
 
@@ -22,7 +22,7 @@ export const answerComment = () => {
                     method: "POST",
                     body: JSON.stringify({
                         //name: replaceAllTags(userNameElement),
-                        text: "<div class=\"quote\">" + QUOTE_BEGIN + authorName + ":\n" + authorComment + QUOTE_END + "</div>" + replaceAllTags(userCommentElement),
+                        text: replaceAllTags(userCommentElement),
                         forceError: true,
                     }),
                 })
@@ -44,11 +44,6 @@ export const answerComment = () => {
                 .catch((error) => {
                     alert(error.message);
                 })
-                .finally(() => {
-                    blockForm[0].style.display = "flex";
-                    blockLoader.style.display = "none";
-                    answerButton.textContent = 'Написать';  
-                });
             });
         }
     });

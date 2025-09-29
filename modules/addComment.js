@@ -2,7 +2,8 @@ import { initButtonLikes } from "./initButtonLikes.js";
 import { replaceAllTags } from "./replaceAll.js";
 import { renderCommentsList } from "./fetchGETAndRenderComments.js";
 import { addNewComment } from "./api.js";
-import { userNameFromApi } from "../index.js";
+import { deleteCommentFromList } from "./formAddComment.js";
+import { answerComment } from "./answerComment.js";
 
 export let likesCounter = 0;
 
@@ -45,10 +46,12 @@ export const addingComment = () => {
       .finally(() => {
         blockForm[0].style.display = "flex";
         blockLoader.style.display = "none";
+        document.getElementById('btn').textContent = 'Написать';
       });
-      userNameElement.value = "";
       userCommentElement.value = "";
       initButtonLikes();
+      deleteCommentFromList();
+      answerComment();
     }
   });
 };
