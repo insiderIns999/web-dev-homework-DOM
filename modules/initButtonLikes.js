@@ -1,6 +1,6 @@
 import { renderComments } from './renderComments.js';
 import { comments } from './comments.js';
-import { token } from './api.js';
+import { token, switchLikes } from './api.js';
 
 function delay(interval = 300) {
    return new Promise((resolve) => {
@@ -23,16 +23,19 @@ export const initButtonLikes = () => {
                 throw new Error('Авторизуйтесь, чтобы поставить лайк');
             }
             else {
+                const id = comments[index].id;
+                switchLikes({ id });
+                
                 if(!comments[index].isLiked) {
                     status = '-loasing-like-to-like';
                 }
                 else {
                     status = '-loasing-like-to-dislike';
                 }
-
+                
                 buttonLikeElement.classList.add(status);
                 //buttonLikeElement.classList.add('-loading-like');
-                
+                /*
                 delay(2000).then(() => {
                     if (!comments[index].isLiked) {
                         ++comments[index].likes;
@@ -43,6 +46,7 @@ export const initButtonLikes = () => {
                     }
                     renderComments();
                 });
+                */
             }
         });
 

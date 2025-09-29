@@ -3,8 +3,9 @@ import { registrationForm } from "./formRegistration.js";
 import { login } from "./api.js";
 import { updateUserName } from "../index.js";
 import { updateToken } from "./api.js";
-import { renderAddCommentForm } from "./formAddComment.js";
+import { renderAddCommentForm, deleteCommentFromList } from "./formAddComment.js";
 import { addingComment } from "./addComment.js";
+import { deleteButtons } from "./renderComments.js";
 
 export const authorizationForm = () => {
     const authorizationLink = document.getElementById('auth-link');
@@ -32,6 +33,7 @@ export const authorizationForm = () => {
         document.getElementById('authP').style.display = 'none';
         ulElement.style.display = 'none';
         divApp.innerHTML = authFormHTML;
+
         const regLinkToForm = document.getElementById('link-reg');
         regLinkToForm.addEventListener('click', registrationForm);
 
@@ -61,6 +63,7 @@ export const authorizationForm = () => {
                 updateToken(responseData.user.token); //localStorage.setItem('token', responseData.user.token);
                 renderAddCommentForm();
                 addingComment();
+                deleteCommentFromList();
             })
             .catch((err) => {
                 alert(err.message);

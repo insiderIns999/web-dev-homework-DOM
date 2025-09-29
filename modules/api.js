@@ -1,3 +1,5 @@
+import { renderCommentsList } from "./fetchGETAndRenderComments.js";
+
 const commentsURL = 'https://wedev-api.sky.pro/api/v2/oleg-gagarin/comments';
 const authorizationURL = 'https://wedev-api.sky.pro/api/user/login';
 const regURL = 'https://wedev-api.sky.pro/api/user';
@@ -32,7 +34,6 @@ export function login({ login, password }) {
 };
 
 export function registration({ login, name, password }) {
-  console.log(login, name, password);
   return fetch(regURL, {
     method: 'POST',
     body: JSON.stringify({
@@ -53,15 +54,44 @@ export function registration({ login, name, password }) {
 };
 
 export function addNewComment({ text }) {
-
-    return fetch(commentsURL, {
-      method: 'POST',
-      body: JSON.stringify({
-        'text': text,
-        forceError: true,
-      }),
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  return fetch(commentsURL, {
+    method: 'POST',
+    body: JSON.stringify({
+      'text': text,
+      forceError: true,
+    }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
+
+export function deleteComment({ id }) {
+  return fetch(`${commentsURL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(() => {
+    return takeAndRender();
+  })
+  .then(() => {
+    return renderCommentsList();
+  });
+}
+
+export function switchLikes({ id }) {
+    return fetch(`${commentsURL}/${id}/toggle-like`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(() => {
+    return takeAndRender();
+  })
+  .then(() => {
+    return renderCommentsList();
+  });
+}
