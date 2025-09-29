@@ -52,7 +52,7 @@ body {
 
 .comment-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .comment-body {
@@ -107,7 +107,7 @@ body {
 }
 
 .add-form-name {
-  width: 300px;
+  width: 92%;
   padding: 11px 22px;
 }
 
@@ -232,4 +232,53 @@ body {
 
 .-loasing-like-to-dislike {
   animation: toDisLike 2s linear infinite;
+}
+
+.quote {
+  background-color: #fff;
+  color: #000;
+  font-size: 24px;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px;
+}
+
+.auth-form {
+  display: flex;
+  align-items: center;
+}
+
+.auth-form-input {
+  width: 90%;
+}
+
+#uploading-data {
+  display: none;
+}
+
+.a-white {
+  color:#fff;
+  font-weight: bold;
+}
+
+.delete-button {
+  border: 1px outset #ff0;
+  font-style: italic;
+  font-size: 130%;
+  padding: 10px;
+}
+
+.auth-delete-button:hover {
+  background-color: #f00;
+  color: #fff;
+  font-size: 150%;
+  transform: scaleZ(1,5);
+  transition: 1.5s;
+}
+
+.auth-delete-button:not(:hover) {
+  background-color: none;
+  color: #000000;
+  font-size: 100%;
+  transform: scaleZ(1);
+  transition: 1.5s;
 }
