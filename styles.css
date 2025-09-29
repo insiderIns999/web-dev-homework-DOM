@@ -52,7 +52,7 @@ body {
 
 .comment-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .comment-body {
@@ -258,4 +258,27 @@ body {
 .a-white {
   color:#fff;
   font-weight: bold;
+}
+
+.delete-button {
+  border: 1px outset #ff0;
+  font-style: italic;
+  font-size: 130%;
+  padding: 10px;
+}
+
+.auth-delete-button:hover {
+  background-color: #f00;
+  color: #fff;
+  font-size: 150%;
+  transform: scaleZ(1,5);
+  transition: 1.5s;
+}
+
+.auth-delete-button:not(:hover) {
+  background-color: none;
+  color: #000000;
+  font-size: 100%;
+  transform: scaleZ(1);
+  transition: 1.5s;
 }
