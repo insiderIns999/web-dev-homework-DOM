@@ -2,7 +2,7 @@ import { initButtonLikes } from "./initButtonLikes.js";
 import { replaceAllTags } from "./replaceAll.js";
 import { renderCommentsList } from "./fetchGETAndRenderComments.js";
 import { addNewComment } from "./api.js";
-import { deleteCommentFromList } from "./formAddComment.js";
+import { deleteCommentFromList } from "./deleteButtons.js";
 import { answerComment } from "./answerComment.js";
 
 export let likesCounter = 0;

@@ -10,7 +10,6 @@ export const answerComment = () => {
         else {
             const authorName = comments[index].author.name;
             const authorComment = comments[index].text;
-            //const userNameElement = document.getElementById('input-user-name-addComment');
             const userCommentElement = document.getElementById('textarea');
             userCommentElement.value = 'QUOTE_BEGIN' + authorName + ':\n' + authorComment + 'QUOTE_END ';
 

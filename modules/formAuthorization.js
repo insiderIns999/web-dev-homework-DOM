@@ -1,11 +1,11 @@
-import { ulElement, upload } from "../index.js";
+import { ulElement } from "../index.js";
 import { registrationForm } from "./formRegistration.js";
 import { login } from "./api.js";
 import { updateUserName } from "../index.js";
 import { updateToken } from "./api.js";
-import { renderAddCommentForm, deleteCommentFromList } from "./formAddComment.js";
+import { renderAddCommentForm } from "./formAddComment.js";
 import { addingComment } from "./addComment.js";
-import { deleteButtons } from "./renderComments.js";
+import { deleteButtonsActive, deleteCommentFromList } from "./deleteButtons.js";
 
 export const authorizationForm = () => {
     const authorizationLink = document.getElementById('auth-link');
@@ -64,6 +64,7 @@ export const authorizationForm = () => {
                 renderAddCommentForm();
                 addingComment();
                 deleteCommentFromList();
+                deleteButtonsActive();
             })
             .catch((err) => {
                 alert(err.message);

@@ -7,13 +7,7 @@ import { takeAndRender } from "./api.js";
 export const renderCommentsList = () => {
   return takeAndRender()
     .then((response) => {
-      /*if (
-        response.status == 200)*/ return response.json();
-      /*else {
-        if (response.status == 500)
-          throw new Error("Нет соединения с сервером");
-        if (response.status == 400) throw new Error("Что-то пошло не так");
-      }*/
+      return response.json();
     })
     .then((data) => {
       updateComments(data.comments);

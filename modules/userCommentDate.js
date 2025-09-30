@@ -1,5 +1,3 @@
-//import { format, compareAsc } from "date-fns";
-
 export function getUserCommentDate(dataCommentDate) {
   const date = new Date(dataCommentDate);
   const userDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
@@ -13,6 +11,4 @@ export function getUserCommentDate(dataCommentDate) {
   const userMinutes =
     date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
   return `${userDate}.${userMonth}.${userYear} ${userHours}:${userMinutes}`;
-
-  //return format(dataCommentDate, "yyyy-MM-dd hh.mm.ss");
 }

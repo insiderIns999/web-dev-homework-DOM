@@ -1,11 +1,9 @@
-import { comments, updateComments } from "./comments.js";
+import { comments } from "./comments.js";
 import { initButtonLikes } from "./initButtonLikes.js";
 import { ulElement } from "../index.js";
-//import { buttonSendElement } from '../index.js';
 import { answerComment } from "./answerComment.js";
 import { getUserCommentDate } from "./userCommentDate.js";
-import { deleteCommentFromList } from "./formAddComment.js";
-import { token } from "./api.js";
+import { deleteButtonsActive, deleteCommentFromList } from "./deleteButtons.js";
 
 export const deleteButtons = document.querySelectorAll('.delete-button');
 
@@ -39,12 +37,7 @@ export const renderComments = () => {
 
   ulElement.innerHTML = commentsHTML;
   initButtonLikes();
+  deleteButtonsActive();
   deleteCommentFromList();
   answerComment();
-  if(token != null) {
-	deleteButtons.forEach((deleteButton) => {
-		deleteButton.disabled = false;
-		deleteButton.classList.add('auth-delete-button');
-	});
-  }
 };
