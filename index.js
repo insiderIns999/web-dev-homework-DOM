@@ -1,11 +1,7 @@
 import { renderCommentsList } from './modules/fetchGETAndRenderComments.js';
-//import { takeAndRender } from './modules/api.js';
-import { addingComment } from './modules/addComment.js';
 import { authorizationForm } from './modules/formAuthorization.js';
-//import { buttonSendElement } from './modules/addComment.js';
 
 renderCommentsList()
-//takeAndRender()
 .then(() => {
     authorizationForm();
 })
