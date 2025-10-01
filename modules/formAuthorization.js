@@ -55,8 +55,8 @@ export const authorizationForm = () => {
 
         buttonElement.addEventListener('click', () => {
             login({
-                login: loginInputElement.value,
-                password: passwordInputElement.value,
+                login: (loginInputElement.value).trim(),
+                password: (passwordInputElement.value).trim(),
             })
             .then((responseData) => {
                 updateUserName(responseData.user.name); //localStorage.setItem('name', responseData.user.name);

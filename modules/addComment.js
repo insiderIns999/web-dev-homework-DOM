@@ -25,7 +25,7 @@ export const addingComment = () => {
       blockForm[0].style.display = "none";
       blockLoader.style.display = "block";
 
-      const commentReplaced = replaceAllTags(userCommentElement.value);
+      const commentReplaced = (replaceAllTags(userCommentElement.value)).trim();
 
       addNewComment({ text: commentReplaced })
       .then((response) => {

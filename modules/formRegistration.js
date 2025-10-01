@@ -61,8 +61,8 @@ export const registrationForm = () => {
         const buttonElement = document.getElementById('auth-button');
         buttonElement.addEventListener('click', () => {
             login({
-                login: replaceSymbols(document.getElementById('user-login').value),
-                password: document.getElementById('user-password').value,
+                login: (replaceSymbols(document.getElementById('user-login').value)).trim(),
+                password: (document.getElementById('user-password').value).trim(),
             })
             .then((responseData) => {
                 updateUserName(responseData.user.name); //localStorage.setItem('name', responseData.user.name);
@@ -84,9 +84,9 @@ export const registrationForm = () => {
         let replaceName = replaceSymbols(document.getElementById('user-name').value);
         
         registration({
-            login: replaceLogin,
-            name: replaceName,
-            password: document.getElementById('user-password').value,
+            login: replaceLogin.trim(),
+            name: replaceName.trim(),
+            password: (document.getElementById('user-password').value).trim(),
         })
         .then(() => {
             alert('Вы успешно зарегистрировались'); 

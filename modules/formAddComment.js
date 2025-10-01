@@ -1,8 +1,5 @@
 import { replaceAllTags } from "./replaceAll.js";
 import { userNameFromApi } from "../index.js";
-import { deleteComment } from "./api.js";
-import { comments } from "./comments.js";
-import { deleteButtonsActive } from "./deleteButtons.js";
 
 export const renderAddCommentForm = () => {
     const divApp = document.getElementById('app');
@@ -24,22 +21,4 @@ export const renderAddCommentForm = () => {
     const nameReplaced = replaceAllTags(userNameFromApi);
     userNameElement.value = nameReplaced;
     userNameElement.disabled = true;
-}
-
-export const deleteCommentFromList = () => {
-    const deleteButtonsElements = document.querySelectorAll('.delete-button');
-    for(const deleteButtonElement of deleteButtonsElements) {
-        deleteButtonElement.addEventListener('click', (event) => {
-            event.stopPropagation();
-            
-            deleteButtonElement.style.backgroundColor = '#efefef';
-            deleteButtonElement.style.color = '#000';
-            deleteButtonElement.textContent = 'Комментарий удаляется...';
-            
-            const index = deleteButtonElement.dataset.index;
-            const id = comments[index].id;
-            deleteButtonsActive();
-            deleteComment({ id });
-        });
-    }
 }
