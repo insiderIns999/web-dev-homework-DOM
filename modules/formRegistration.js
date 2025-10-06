@@ -17,9 +17,9 @@ export const registrationForm = () => {
         <br />
         <input id="user-password" type="password" name="password" class="add-form-name" placeholder="Введите пароль" />
         <div class="add-form-row reg-form-row">
-        <button id="reg-button" class="add-form-button">Зарегистрироваться</button>
+            <a id="authorization-button" class="a-white" href="#">Войти</a>
+            <button id="reg-button" class="add-form-button">Зарегистрироваться</button>
         </div>
-        <a id="authorization-button" class="a-white" href="#">Войти</a>
     </div>
     <div id="uploading-data" class="uploading-data">
         <img class="uploader" src="loader.gif" alt="Индикатор загрузки" />
