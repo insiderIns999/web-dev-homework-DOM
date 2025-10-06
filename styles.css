@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Mon Amour Two';
+  src: url('./fonts/monamourtwo_medium.woff2') format('woff2'), url('./fonts/monamourtwo_medium.woff') format('woff');
+}
+
 body {
   margin: 0;
 }
@@ -281,4 +286,14 @@ body {
   font-size: 100%;
   transform: scaleZ(1);
   transition: 1.5s;
+
+}
+
+#input-user-name-addComment {
+  background-color: #ccc;
+  color: #f00;
+  font-family: 'Mon Amour Two';
+  font-weight: bold;
+=======
+
 }

@@ -1,4 +1,16 @@
 import { renderCommentsList } from './modules/fetchGETAndRenderComments.js';
+
+import { authorizationForm } from './modules/formAuthorization.js';
+
+renderCommentsList()
+.then(() => {
+    authorizationForm();
+})
+
+
+export const upload = document.getElementById('uploading-data');
+
+=======
 //import { takeAndRender } from './modules/api.js';
 import { addingComment } from './modules/addComment.js';
 import { authorizationForm } from './modules/formAuthorization.js';
@@ -19,6 +31,7 @@ renderCommentsList()
 
 
 export const upload = document.getElementById('uploading-data');
+
 
 ('use strict');
 

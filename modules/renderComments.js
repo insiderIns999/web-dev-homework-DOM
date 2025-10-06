@@ -1,13 +1,15 @@
-import { comments, updateComments } from "./comments.js";
+import { comments } from "./comments.js";
 import { initButtonLikes } from "./initButtonLikes.js";
-import { ulElement, buttonSendElement } from "../index.js";
-import { addComment } from "./addComment.js";
+import { ulElement } from "../index.js";
 import { answerComment } from "./answerComment.js";
 import { getUserCommentDate } from "./userCommentDate.js";
+import { deleteButtonsActive, deleteCommentFromList } from "./deleteButtons.js";
+
+export const deleteButtons = document.querySelectorAll('.delete-button');
 
 export const renderComments = () => {
   const commentsHTML = comments
-    .map((comment) => {
+    .map((comment, index) => {
       return `
 		<li class="comment">
 		  <div class="comment-header">
@@ -20,6 +22,9 @@ export const renderComments = () => {
 			</div>
 		  </div>
 		  <div class="comment-footer">
+		  <div>
+			<button data-index="${index}" class="delete-button" disabled>Удалить комментарий</button>
+		  </div>
 			<div class="likes">
 			  <span class="likes-counter">${comment.likes}</span>
 			  <button class="like-button ${comment.isLiked ? "-active-like" : ""}"></button>
@@ -32,6 +37,7 @@ export const renderComments = () => {
 
   ulElement.innerHTML = commentsHTML;
   initButtonLikes();
-  buttonSendElement.addEventListener("click", addComment);
+  deleteButtonsActive();
+  deleteCommentFromList();
   answerComment();
 };
