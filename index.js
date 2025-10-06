@@ -1,4 +1,5 @@
 import { renderCommentsList } from './modules/fetchGETAndRenderComments.js';
+
 import { authorizationForm } from './modules/formAuthorization.js';
 
 renderCommentsList()
@@ -8,6 +9,29 @@ renderCommentsList()
 
 
 export const upload = document.getElementById('uploading-data');
+
+=======
+//import { takeAndRender } from './modules/api.js';
+import { addingComment } from './modules/addComment.js';
+import { authorizationForm } from './modules/formAuthorization.js';
+//import { buttonSendElement } from './modules/addComment.js';
+
+export const userNameElement = document.querySelector('.add-form-name');
+export const userCommentElement = document.querySelector('.add-form-text');
+
+
+renderCommentsList()
+//takeAndRender()
+.then(() => {
+    authorizationForm();
+})
+.then(() => {
+    addingComment();
+})
+
+
+export const upload = document.getElementById('uploading-data');
+
 
 ('use strict');
 
