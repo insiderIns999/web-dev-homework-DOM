@@ -2,7 +2,9 @@ import { renderCommentsList } from './modules/fetchGETAndRenderComments.js';
 import { authorizationForm } from './modules/formAuthorization.js';
 
 renderCommentsList()
-
+.then(() => {
+    authorizationForm();
+})
 
 export const upload = document.getElementById('uploading-data');
 
