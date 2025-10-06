@@ -10,12 +10,10 @@ renderCommentsList()
     authorizationForm();
 })
 
-
 export const upload = document.getElementById('uploading-data');
 
 export const userNameElement = document.querySelector('.add-form-name');
 export const userCommentElement = document.querySelector('.add-form-text');
-
 
 renderCommentsList()
 //takeAndRender()
@@ -26,9 +24,7 @@ renderCommentsList()
     addingComment();
 })
 
-
 export const upload = document.getElementById('uploading-data');
-
 
 ('use strict');
 
@@ -42,4 +38,5 @@ export const updateUserName = (newUserName) => {
 
 console.log('It works!');
 console.log('Complete');
+
 
