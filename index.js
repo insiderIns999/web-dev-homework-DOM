@@ -7,7 +7,7 @@ import { authorizationForm } from './modules/formAuthorization.js';
 
 renderCommentsList()
 .then(() => {
-    authorizationForm();
+   // authorizationForm();
 })
 
 export const upload = document.getElementById('uploading-data');
@@ -38,5 +38,6 @@ export const updateUserName = (newUserName) => {
 
 console.log('It works!');
 console.log('Complete');
+
 
 
