@@ -1,6 +1,9 @@
 import { renderCommentsList } from './modules/fetchGETAndRenderComments.js';
-
 import { authorizationForm } from './modules/formAuthorization.js';
+//import { takeAndRender } from './modules/api.js';
+import { addingComment } from './modules/addComment.js';
+import { authorizationForm } from './modules/formAuthorization.js';
+//import { buttonSendElement } from './modules/addComment.js';
 
 renderCommentsList()
 .then(() => {
@@ -9,12 +12,6 @@ renderCommentsList()
 
 
 export const upload = document.getElementById('uploading-data');
-
-=======
-//import { takeAndRender } from './modules/api.js';
-import { addingComment } from './modules/addComment.js';
-import { authorizationForm } from './modules/formAuthorization.js';
-//import { buttonSendElement } from './modules/addComment.js';
 
 export const userNameElement = document.querySelector('.add-form-name');
 export const userCommentElement = document.querySelector('.add-form-text');
@@ -45,3 +42,4 @@ export const updateUserName = (newUserName) => {
 
 console.log('It works!');
 console.log('Complete');
+
